@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 命名空间 全球唯一 -->
+<mapper  namespace="com.bw.mapper.BusinessMapper">
+<select id="getALL" resultType="com.bw.bean.Business" parameterType="com.bw.bean.Business">
+select * from business
+<if test="id!=null and id!=''">
+	where id like '%${id}%'
+</if>
+<if test="keywords!=null and keywords!=''">
+	where keywords like '%${keywords}%'
+</if>
+<if test="represent!=null and represent!=''">
+	where represent like '%${represent}%'
+</if>
+<if test="name!=null and name!=''">
+	where name like '%${name}%'
+</if>
+<if test="yproject!=null and yproject!=''">
+	where yproject like '%${yproject}%'
+</if>
+<if test="address!=null and address!=''">
+	where address like '%${address}%'
+</if>
+<if test="registered!=null and registered!=''">
+	where registered like '%${registered}%'
+</if>
+<if test="birthday!=null and birthday!=''">
+	where birthday like '%${birthday}%'
+</if>
+<if test="inspection!=null and inspection!=''">
+	where inspection like '%${inspection}%'
+</if>
+<if test="state!=null and state!=''">
+	where state like '%${state}%'
+</if>
+
+</select>
+<select id="getAllByID" resultType="com.bw.bean.Business" parameterType="com.bw.bean.Business">
+	select * from business where id=#{id}
+</select>
+<update id="SetBus" parameterType="com.bw.bean.Business">
+	update business set state=#{state} where id=#{id}
+</update>
+</mapper>

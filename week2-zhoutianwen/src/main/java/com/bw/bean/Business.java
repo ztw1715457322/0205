@@ -1,6 +1,7 @@
 package com.bw.bean;
 
 import java.math.BigInteger;
+import java.util.Date;
 
 public class Business {
 	private BigInteger id;
@@ -10,11 +11,11 @@ public class Business {
 	private String  yproject;
 	private String  address;
 	private String  registered;
-	private String birthday ;
+	private Date birthday ;
 	private String  inspection;
-	private String  state;
+	private String  state;//审核状态
 	private String remark;
-
+	
 	public BigInteger getId() {
 		return id;
 	}
@@ -57,11 +58,30 @@ public class Business {
 	public void setRegistered(String registered) {
 		this.registered = registered;
 	}
-	public String getBirthday() {
+
+	public Date getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	public Business() {
+		super();
+	}
+	public Business(BigInteger id, String keywords, String represent, String name, String yproject, String address,
+			String registered, Date birthday, String inspection, String state, String remark) {
+		super();
+		this.id = id;
+		this.keywords = keywords;
+		this.represent = represent;
+		this.name = name;
+		this.yproject = yproject;
+		this.address = address;
+		this.registered = registered;
+		this.birthday = birthday;
+		this.inspection = inspection;
+		this.state = state;
+		this.remark = remark;
 	}
 	public String getInspection() {
 		return inspection;

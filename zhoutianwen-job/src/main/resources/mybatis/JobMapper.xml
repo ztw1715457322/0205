@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.houlebin.job.dao.JobMapper">
+
+<select id="list" resultType="Applicant">
+	
+	select a.* , AVG(s.score) avgScore, GROUP_CONCAT(CONCAT(j.`name`,':',s.score,'分')) strScore  
+		from cctv_applicant a LEFT JOIN cctv_score s on  s.aid=a.id LEFT join cctv_job j on j.id=s.jid 
+		<if test="value==1">
+			<!-- 主持大于90分 -->
+			where s.score &gt;= 90 and s.jid=1
+		</if>
+		<if test="value==3">
+	
+			where a.edu &gt; 2
+		</if>
+		GROUP BY a.id
+		<if test="value==2">
+
+			HAVING avgScore &gt;= 80
+		</if>
+</select>
+	
+</mapper>

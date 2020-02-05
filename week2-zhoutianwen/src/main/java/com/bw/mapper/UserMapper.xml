@@ -36,7 +36,6 @@ select * from business
 <if test="state!=null and state!=''">
 	where state like '%${state}%'
 </if>
-
 </select>
 <select id="getAllByID" resultType="com.bw.bean.Business" parameterType="com.bw.bean.Business">
 	select * from business where id=#{id}
